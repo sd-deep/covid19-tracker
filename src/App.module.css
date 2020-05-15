@@ -1,15 +1,23 @@
 body {
     background-color: rgb(250, 250, 250);    
 }
-
 .container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex;    
     flex-direction: column;
 }
 
-.image{
-    margin: 20px 0;
+.navigationLinks{
+    display: flex;
+    justify-content: flex-start;
+    
 }
-
+li{
+    list-style-type: none;
+    border: 1px solid grey;
+    padding: 10px;
+    color: black
+}
+a{
+    text-decoration: none;
+    color: black;
+}
