@@ -7,6 +7,8 @@ import styles from './Home.module.css';
 import CovidPic from '../../images/covid19.png';
 
 class Home extends Component {
+    _isMounted = false;
+
     state = {
         data: {},
         country: '',
@@ -15,16 +17,28 @@ class Home extends Component {
     
     handleCountryChange = async (country) => {
         //fetch the data
-        const fetchedData = await fetchdata(country);
-        //set the state
-        this.setState({ data: fetchedData, country: country });
+        if(this._isMounted){
+            console.log('mouted : ', this._isMounted)
+            const fetchedData = await fetchdata(country);
+            //set the state
+            this.setState({ data: fetchedData, country: country });
+        }
+      
     }
     
 
     async componentDidMount() {
-        const fetchedData = await fetchdata()
+        this._isMounted = true;
 
-        this.setState({ data: fetchedData })
+        if(this._isMounted){
+        const fetchedData = await fetchdata()
+            this.setState({ data: fetchedData })
+        }
+        
+    }
+
+    componentWillUnmount(){
+        this._isMounted = false;
     }
 
     render() {

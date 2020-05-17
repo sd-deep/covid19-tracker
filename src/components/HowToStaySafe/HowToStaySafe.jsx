@@ -3,7 +3,8 @@ import styles from './HowToStaySafe.module.css';
 import handWash from '../../images/undraw_wash_hands_nwl2.svg';
 import socialDistancing from '../../images/undraw_social_distancing_2g0u.svg'
 import medicalSupport from '../../images/undraw_medical_research_qg4d.svg'
-import hello from '../../images/undraw_Hello_qnas.svg'
+import hello from '../../images/undraw_Hello_qnas.svg';
+import Footer  from '../Footer/Footer'
 
 function HowToStaySafe() {
     return (
@@ -43,10 +44,10 @@ function HowToStaySafe() {
                  
                </section>
             </div>
-            <div>
-                For in depth details : <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public">https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public</a> 
+            <div className={styles.contentContainerOdd}>
+                For in depth details visit<a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public" target="_blank" rel='noopener noreferrer'>: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public</a> 
             </div>
-            
+            <Footer />
         </div>
     )
 }

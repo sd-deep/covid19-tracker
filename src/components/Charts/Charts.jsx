@@ -20,7 +20,7 @@ const Charts = ({ data : {confirmed, recovered, deaths}, country }) => {
             ?(
                 <Line
                     data={{
-                        labels : dailyData.map(({date})=> new Date(date).toLocaleDateString() ),
+                        labels : dailyData.map(({date})=> new Date(date).toDateString() ),
                         datasets : [{
                             data : dailyData.map(({confirmed})=> confirmed),
                             label : 'Infected',
@@ -34,6 +34,9 @@ const Charts = ({ data : {confirmed, recovered, deaths}, country }) => {
                             backgroundColor : 'rgba(191, 41, 0, 1)',
                             fill : true,
                         }],
+                    }}
+                    options ={{
+                        maintainAspectRatio: false,                        
                     }}
                 />) : null
     )
@@ -57,8 +60,10 @@ const Charts = ({ data : {confirmed, recovered, deaths}, country }) => {
                         }]                        
                     }}
                     options ={{
+                        maintainAspectRatio: false,
                         legend : { display : false},
-                        title : { display : true, text : `Current state in ${country}`}, 
+                        title : { display : true, text : `Current state in ${country}`}
+                        
                     }}
 
                 />) : null
