@@ -6,13 +6,19 @@ import styles from './Charts.module.css'
 
 const Charts = ({ data : {confirmed, recovered, deaths}, country }) => {
     const [dailyData, setDailyData ]=useState([]);
-
+   
     useEffect(() => {
+        
         const fetchAPI = async () => {
             setDailyData(await fetchDailyData())
         }
-        
-        fetchAPI();
+        console.log('fetching daily data')
+        fetchAPI()
+
+        return () => {
+            console.log('unmounting charts');
+            
+        }
     }, []);
 
     const lineChart = (
@@ -20,7 +26,7 @@ const Charts = ({ data : {confirmed, recovered, deaths}, country }) => {
             ?(
                 <Line
                     data={{
-                        labels : dailyData.map(({date})=> new Date(date).toDateString() ),
+                        labels : dailyData.map(({date})=> new Date(date).toDateString().slice(0,10) ),
                         datasets : [{
                             data : dailyData.map(({confirmed})=> confirmed),
                             label : 'Infected',

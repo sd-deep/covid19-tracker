@@ -7,13 +7,17 @@ import TextField from "@material-ui/core/TextField";
 
 const CountryPicker = ({ handleCountryChange }) => {
   const [fetchedCountries, setFetchedCountries] = useState([]);
-
   useEffect(() => {
     const fetchAPI = async () => {
       setFetchedCountries(await fetchCountries());
     };
+    console.log('fetching countries')
     fetchAPI();
-  }, [fetchedCountries]);
+    return () => {
+      console.log('unmounting country picker');
+      
+  }
+  }, []);
 
   return (
     <>
