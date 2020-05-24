@@ -2,17 +2,19 @@ import React from 'react';
 import { Card, CardContent, Typography, Grid} from '@material-ui/core'
 
 import CountUp from 'react-countup'
+import {useSpring, animated} from 'react-spring'
 
 import styles from './Cards.module.css'
 import cx from 'classnames';
 
+
 const Cards = ( { data : { confirmed, recovered, deaths, lastUpdate}}) => {
-   
+    const props = useSpring({opacity: 1, marginTop : 50, from: {opacity: 0, marginTop : 0}})
     if(!confirmed){
             return "";
     }
     return (
-        <div className={styles.container}>
+        <animated.div style={props} className={styles.container}>
             <Grid container justify="center" spacing={3}>
                 <Grid item component={ Card } xs={12} md={3} className={cx(styles.card, styles.infected)}>
                     <CardContent>
@@ -60,7 +62,7 @@ const Cards = ( { data : { confirmed, recovered, deaths, lastUpdate}}) => {
                     </CardContent>
                 </Grid>
             </Grid>
-        </div>
+        </animated.div>
     )
 }
 

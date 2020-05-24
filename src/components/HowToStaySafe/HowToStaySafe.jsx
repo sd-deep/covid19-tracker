@@ -5,10 +5,13 @@ import socialDistancing from '../../images/undraw_social_distancing_2g0u.svg'
 import medicalSupport from '../../images/undraw_medical_research_qg4d.svg'
 import hello from '../../images/undraw_Hello_qnas.svg';
 import Footer  from '../Footer/Footer'
+import {useSpring, animated} from 'react-spring'
+
 
 function HowToStaySafe() {
+    const props = useSpring({opacity: 1, marginTop : 50, from: {opacity: 0, marginTop : -200}})
     return (
-        <div className={styles.container}>
+        <animated.div style={props} className={styles.container}>
             <div className={styles.contentContainerOdd}>
                <img src={handWash} alt="hand wash illustration" className={styles.illustration}/>
                <section className={styles.content}>
@@ -48,7 +51,7 @@ function HowToStaySafe() {
                 For in depth details visit<a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public" target="_blank" rel='noopener noreferrer'>: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public</a> 
             </div>
             <Footer />
-        </div>
+        </animated.div>
     )
 }
 
